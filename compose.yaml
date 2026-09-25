@@ -1,0 +1,14 @@
+services:
+  site:
+    image: ruby:3.3
+    container_name: luffy-writeups-preview
+    working_dir: /srv/jekyll
+    command: bash -lc "bundle install && bundle exec jekyll serve --host 0.0.0.0 --no-watch"
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/srv/jekyll
+      - writeups_bundle:/usr/local/bundle
+
+volumes:
+  writeups_bundle:

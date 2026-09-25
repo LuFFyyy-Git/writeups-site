@@ -1,0 +1,35 @@
+---
+layout: default
+title: Writeups
+description: Forensics, CTFs, and technical investigations explained clearly.
+---
+
+<section class="home-hero">
+  <h1>Writeups <span>/ Walkthroughs</span></h1>
+  <p class="home-hero__deck">A collection of challenges, solutions, and lessons learned.</p>
+</section>
+
+<section class="post-index" aria-labelledby="latest-writeups">
+  <div class="section-heading">
+    <h2 id="latest-writeups">Latest writeups</h2>
+    <span>{{ site.posts | size }} published</span>
+  </div>
+
+  {% for post in site.posts %}
+    <article class="post-card">
+      <a href="{{ post.url | relative_url }}" aria-label="Read {{ post.title }}">
+        <div class="post-card__meta">
+          <span>{{ post.category | default: post.categories.first | default: 'Writeup' }}</span>
+          <span>{{ post.date | date: "%d %b %Y" }}</span>
+        </div>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 32 }}</p>
+        <div class="post-card__footer">
+          <span>{{ post.reading_time | default: '10 min read' }}</span>
+          <span class="post-card__arrow">Read writeup →</span>
+        </div>
+      </a>
+    </article>
+  {% endfor %}
+</section>
+

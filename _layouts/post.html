@@ -1,0 +1,65 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-hero">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <span aria-hidden="true">›</span>
+      <span aria-current="page">{{ page.title }}</span>
+    </nav>
+    <p class="post-kicker">{{ page.category | default: page.categories.first | default: 'Writeup' }}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="post-deck">{{ page.description }}</p>{% endif %}
+    <div class="post-meta">
+      <div class="post-meta__facts">
+        <span>{{ page.date | date: "%d %B %Y" }}</span>
+        <span aria-hidden="true">•</span>
+        <span>{{ page.reading_time | default: '10 min read' }}</span>
+        {% if site.goatcounter_code %}
+          <span class="post-meta__view-separator" aria-hidden="true" hidden>•</span>
+          <span class="post-meta__views" data-view-count data-goatcounter-code="{{ site.goatcounter_code }}" hidden></span>
+        {% endif %}
+      </div>
+      {% if page.tags %}
+        <div class="post-meta__tags" aria-label="Topics">
+          {% for tag in page.tags %}
+            <a class="post-meta__tag" href="{{ '/' | relative_url }}?q={{ tag | url_encode }}" data-search-query="{{ tag }}">{{ tag }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="post-layout">
+    <aside class="toc-card" aria-label="Table of contents">
+      <div class="sidebar-section">
+        <p>Contents</p>
+        <nav id="toc"></nav>
+      </div>
+      {% if page.tags %}
+        <div class="sidebar-section">
+          <p>Topics</p>
+          <div class="topic-list">
+            {% for tag in page.tags %}
+              <a href="{{ '/' | relative_url }}?q={{ tag | url_encode }}" data-search-query="{{ tag }}">{{ tag }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </aside>
+
+    <div class="post-content" id="post-content">
+      {{ content }}
+    </div>
+  </div>
+
+  <footer class="post-footer">
+    <p class="post-footer__label">CASE CLOSED</p>
+    <h2>More writeups are coming.</h2>
+    <p>Return to the archive for the next investigation or technical walkthrough.</p>
+    <a class="button" href="{{ '/' | relative_url }}">Browse all writeups →</a>
+  </footer>
+</article>
+

@@ -1,0 +1,40 @@
+title: "Luffy's Writeup"
+description: "A collection of challenges, solutions, and lessons learned."
+url: "https://luffyyy-git.github.io"
+baseurl: "/writeups-site"
+
+remote_theme: pages-themes/hacker@v0.2.0
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
+
+author:
+  name: Luffy
+
+timezone: Asia/Kuala_Lumpur
+lang: en
+permalink: /posts/:title/
+show_downloads: false
+goatcounter_code: luffy
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+
